@@ -1,0 +1,45 @@
+.flexControls {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexControls-ui-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.flexControls-ui-title > div {
+  width: 50%;
+  margin: 0;
+}
+
+.flexControls-ui-title p {
+  margin: 0;
+}
+
+.flexControls-ui-container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3%;
+}
+
+.flexControls-ui {
+  width: 50%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+.flexControls-ui > div {
+  width: 100%;
+}

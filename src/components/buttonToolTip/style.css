@@ -1,0 +1,14 @@
+.buttonToolTip {
+  width: 100px;
+  position: absolute;
+  top: 110%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white;
+  opacity: 0;
+  transition: 0.5s ease opacity;
+}
+
+.buttonToolTip > p {
+  margin: 2px;
+}

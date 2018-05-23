@@ -1,28 +1,21 @@
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  max-width: 740px;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App > * {
+  flex-grow: 1;
+  height: 50%;
+  /* since there are only 2 objects */
 }

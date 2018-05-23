@@ -1,0 +1,26 @@
+.controlItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.controlItem > p {
+  user-select: none;
+}
+
+.controlItem > p {
+  user-select: none;
+}
+
+.controlItem-option {
+  width: 100%;
+}
+
+.controlItem > * {
+  box-sizing: border-box;
+  width: 50%;
+  padding-right: 8%;
+  padding-left: 8%;
+}
