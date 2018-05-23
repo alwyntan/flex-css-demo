@@ -6,7 +6,7 @@ import copyIcon from '../../assets/copy.svg';
 export default class ShowCSS extends Component {
   constructor() {
     super();
-    this.style;
+    this.style = '';
   }
 
   render() {

@@ -59,11 +59,15 @@ export default class FlexComponent extends Component {
   };
 
   componentDidMount() {
+    window.addEventListener('resize', this._handleResize);
+  }
+
+  _handleResize = () => {
     this.setState({
       size:
         this.container.clientHeight > this.container.clientWidth
           ? this.container.clientWidth * 0.4
           : this.container.clientHeight * 0.4
     });
-  }
+  };
 }

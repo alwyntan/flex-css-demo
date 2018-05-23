@@ -7,8 +7,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      display: 'flex',
-      'justify-content': ''
+      style: { display: 'flex' },
+      height: '100%'
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ height: window.innerHeight }, () => {
+      window.dispatchEvent(new Event('resize'));
+    });
+    window.onresize = () => {
+      if (this.state.height !== window.innerHeight) {
+        this.setState({ height: window.innerHeight }, () => {
+          window.dispatchEvent(new Event('resize'));
+        });
+      }
     };
   }
 
@@ -16,11 +29,11 @@ class App extends Component {
     // create the style
     const { camelCaseStyle, snakeCaseStyle } = this.createStyle();
     return (
-      <div className="App">
+      <div className="App" style={{ height: this.state.height }}>
         <FlexControls
           style={snakeCaseStyle}
           onStyleChange={style => {
-            this.setState({ ...style });
+            this.setState({ style: { display: 'flex', ...style } });
           }}
         />
         <FlexComponent style={camelCaseStyle} />
@@ -31,8 +44,9 @@ class App extends Component {
   createStyle() {
     let camelCaseStyle = {};
     let snakeCaseStyle = {};
-    for (const key in this.state) {
-      const val = this.state[key];
+    console.log(this.state.style);
+    for (const key in this.state.style) {
+      const val = this.state.style[key];
       if (val === '-- none --') continue;
       camelCaseStyle[this.snakeToCamel(key)] = val;
       snakeCaseStyle[key] = val;
