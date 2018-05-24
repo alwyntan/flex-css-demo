@@ -25,22 +25,6 @@ export default class ShowCSS extends Component {
     );
   }
 
-  fallbackCopyTextToClipboard(text) {
-    var textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Fallback: Copying text command was ' + msg);
-    } catch (err) {
-      console.error('Fallback: Oops, unable to copy', err);
-    }
-  }
-
   renderStyle() {
     this.style = '';
     return Object.keys(this.props.style).map((key, i) => {
@@ -61,6 +45,37 @@ export default class ShowCSS extends Component {
   }
 
   _handleCopyCSSStyle = e => {
-    navigator.clipboard.writeText(this.style);
+    if (!navigator.clipboard) {
+      this.fallbackCopyTextToClipboard(this.style);
+      return;
+    }
+
+    navigator.clipboard.writeText(this.style).then(
+      function() {
+        console.log('Async: Copying to clipboard was successful!');
+      },
+      function(err) {
+        console.error('Async: Could not copy text: ', err);
+      }
+    );
   };
+
+  fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement('textarea');
+    textArea.style.cssText = 'position:fixed';
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
 }

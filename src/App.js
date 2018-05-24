@@ -33,7 +33,7 @@ class App extends Component {
         <FlexControls
           style={snakeCaseStyle}
           onStyleChange={style => {
-            this.setState({ style: { display: 'flex', ...style } });
+            this.setState({ style: { ...this.state.style, ...style } });
           }}
         />
         <FlexComponent style={camelCaseStyle} />
